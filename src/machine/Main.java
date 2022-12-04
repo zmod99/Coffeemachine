@@ -1,12 +1,5 @@
 package machine;
-//Write how many cups of coffee you will need:
-//> 125
-//For 125 cups of coffee you will need:
-//25000 ml of water
-//6250 ml of milk
-//1875 g of coffee beans
-//Write how many cups of coffee you will need:
-//At the moment, the coffee machine has $550, 400 ml of water, 540 ml of milk, 120 g of coffee beans, and 9 disposable cups.
+
 
 import java.util.Scanner;
 
@@ -14,15 +7,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-        String chooser;
         CoffeeMachine coffeeMachine = new CoffeeMachine();
         coffeeMachine.money = 550;
         coffeeMachine.water = 400;
         coffeeMachine.milk = 540;
         coffeeMachine.beans = 120;
         coffeeMachine.cups = 9;
-
-        while (1 == 1) {
+        while (true) {
             coffeeMachine.askForService();
         }
 
@@ -44,12 +35,7 @@ class CoffeeMachine {
 
     int money = 0;
 
-    /*For one espresso, the coffee machine needs 250 ml of water and 16 g of coffee beans. It costs $4.
-For a latte, the coffee machine needs 350 ml of water, 75 ml of milk, and 20 g of coffee beans. It costs $7.
-And for a cappuccino, the coffee machine needs 200 ml of water, 100 ml of milk, and 12 g of coffee beans. It costs $6.*/
-    public boolean isEnough(CoffeeMachine coffeeMachine) {
-        return coffeeMachine.water >= 200 && coffeeMachine.milk >= 50 && coffeeMachine.beans >= 15;
-    }
+
 
     public void showMenu() {
         //The coffee machine has:
@@ -70,12 +56,12 @@ And for a cappuccino, the coffee machine needs 200 ml of water, 100 ml of milk, 
     public void askForService() {
         String chooser;
         System.out.println("\nWrite action(buy, fill, take, remaining, exit):");
-        chooser = scanner.next();
+        chooser = scanner.nextLine();
         switch (chooser) {
             case "buy":
                 String input;
                 System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
-                input = scanner.nextLine();
+                input = scanner.next();
                 if (input.equals("back")) {
                     break;
                 } else {
@@ -96,13 +82,13 @@ And for a cappuccino, the coffee machine needs 200 ml of water, 100 ml of milk, 
                 break;
             case "fill":
                 System.out.println("Write how many ml of water you want to add:");
-                water += scanner.nextInt();
+                water += Integer.parseInt(scanner.nextLine());
                 System.out.println("Write how many ml of milk you want to add: ");
-                milk += scanner.nextInt();
+                milk += Integer.parseInt(scanner.nextLine());
                 System.out.println("Write how many grams of coffee beans you want to add:  ");
-                beans += scanner.nextInt();
+                beans += Integer.parseInt(scanner.nextLine());
                 System.out.println("Write how many disposable cups you want to add:");
-                cups += scanner.nextInt();
+                cups += Integer.parseInt(scanner.nextLine());
                 break;
             case "take":
                 System.out.println("I gave you $" + money);
