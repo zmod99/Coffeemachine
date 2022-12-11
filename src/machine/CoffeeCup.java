@@ -1,21 +1,12 @@
 package machine;
 
-public class CoffeeCup {                  // child class, subclass of Coffeemachine,
-
-    int water;
-    int milk;
-    int beans;
-    int cups;
-    int money;
+public class CoffeeCup extends CoffeeMachine {                  // child class, subclass of Coffeemachine,
 
     String name;
 
-    public CoffeeCup(int water, int milk, int beans, int cups, int money, String name) {  //mogu lako dodavati nove vrste kave ove klase
-        this.water = water;
-        this.milk = milk;
-        this.beans = beans;
-        this.cups = cups;
-        this.money = money;
+
+    public CoffeeCup(int water, int milk, int beans, int cups, int money, String name) { //mogu lako dodavati nove vrste kave ove klase
+        super(water, milk, beans, cups, money);
         this.name = name;
     }
 
