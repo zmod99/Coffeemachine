@@ -1,6 +1,5 @@
 package machine;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -18,20 +17,14 @@ public class Main {
 
     static boolean adminAccess = false;
 
-    static final CoffeeMachine coffeeMachine;
+    static CoffeeMachine coffeeMachine;
 
-    static {                     //static {} ???
-        try {
-            coffeeMachine = readCoffeeMachine();                //
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public static void main(String[] args) throws IOException {
+        coffeeMachine = readCoffeeMachine();
         while (true) {
-            showUserMenu();                //Izbornik za kupce, izade iz petlje ako
-            showMenu();                   //izbornik za vlasnika
+            processUserMenu();
+            showAdminMenu();
         }
 
     }
@@ -51,25 +44,25 @@ public class Main {
         System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
         String input = scanner.nextLine();
         if (input.equals("back")) {
+            return;
+        }
+        switch (Integer.parseInt(input)) {
+            case 1:
+                coffeeMachine.buy(espresso);
+                break;
+            case 2:
+                coffeeMachine.buy(latte);
+                break;
+            case 3:
+                coffeeMachine.buy(cappuccino);
+                break;
+            default:
+                System.out.println("Wrong input");
 
-        }else {
-            switch (Integer.parseInt(input)) {
-                case 1:
-                    coffeeMachine.buy(espresso);
-                    break;
-                case 2:
-                    coffeeMachine.buy(latte);
-                    break;
-                case 3:
-                    coffeeMachine.buy(cappuccino);
-                    break;
-                default:
-                    System.out.println("Wrong input");
-            }
         }
     }
 
-    public static void showUserMenu() throws IOException {
+    public static void processUserMenu() throws IOException {
         while (!adminAccess) {
             System.out.println("Write action (buy, admin, exit):");
             switch (scanner.nextLine()) {
@@ -91,7 +84,7 @@ public class Main {
 
     }
 
-    public static void showMenu() throws IOException {
+    public static void showAdminMenu() throws IOException {
         System.out.println("\nWrite action(buy, fill, take, remaining, exit):");
         switch (scanner.nextLine()) {
             case "buy":

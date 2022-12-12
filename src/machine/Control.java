@@ -34,7 +34,7 @@ class Control {
         filewriter.write(Main.coffeeMachine.milk + ";");
         filewriter.write(Main.coffeeMachine.beans + ";");
         filewriter.write(Main.coffeeMachine.cups + ";");
-        filewriter.write(Main.coffeeMachine.money + ";");
+        filewriter.write(Main.coffeeMachine.money + ";");  //ako ne stavim ; onda ispise neke cudne znakove
         filewriter.write("\n" + "admin;admin12345;");
         filewriter.close();
     }

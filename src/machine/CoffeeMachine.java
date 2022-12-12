@@ -1,7 +1,5 @@
 package machine;
 
-import java.util.Scanner;
-
 
 class CoffeeMachine {
 
@@ -37,11 +35,11 @@ class CoffeeMachine {
             System.out.println("Not enough cups!");
         } else {
             System.out.println(selectedCoffee.name + " bought!");
-            this.water -= selectedCoffee.water;
-            this.milk -= selectedCoffee.milk;
-            this.beans -= selectedCoffee.beans;
-            this.cups -= selectedCoffee.cups;
-            this.money += selectedCoffee.money;
+            this.water -= selectedCoffee.needsWater;
+            this.milk -= selectedCoffee.needsMilk;
+            this.beans -= selectedCoffee.needsBeans;
+            this.cups -= selectedCoffee.needsCups;
+            this.money += selectedCoffee.needsMoney;
         }
 
 
